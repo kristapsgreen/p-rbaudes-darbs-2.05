@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
+from abc import ABC, ABCMeta , abstractmethod
+from collections import namedtuple 
 
-class Produkts:
+class Produkts(metaclass=ABCMeta):
     @abstractmethod
     def __init__(self, nosaukums, cena, apraksts):
         self.nosaukums = nosaukums
@@ -17,3 +18,18 @@ class Apgerbs(Produkts):
 
 class Gramata(Produkts):
     pass
+
+class ElektronikaTuple(namedtuple):
+    nosaukums: str
+    cena: str
+    apraksts: str
+
+class ApgerbsTuple(namedtuple):
+    nosaukums: str
+    cena: str
+    apraksts: str
+
+class GramataTuple(namedtuple):
+    nosaukums: str
+    cena: str
+    apraksts: str
