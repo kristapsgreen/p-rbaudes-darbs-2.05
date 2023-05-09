@@ -10,7 +10,7 @@ class Produkts():
         self.cena = cena
         self.apraksts = apraksts
     def print(self):
-        print(self.nosaukums  + " " + self.cena + " " + self.apraksts)
+        print(self.nosaukums  + " " + str(self.cena) + " " + self.apraksts)
     def price(self):
         return self.cena
     def ChangeValuta(self, currency):

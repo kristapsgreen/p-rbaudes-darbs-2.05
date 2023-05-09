@@ -14,10 +14,33 @@ def Izvade(preces):
     for i in range(len(preces)):
         preces[i].print()
 
+def pievienotGrozam(grozs, obj, numb):
+    grozs.update({obj : numb})
+
+def izvgrozs(grozs):
+    for x , y in grozs.items():
+        for i in range(y):
+            x.print()
+
+def nongrozs(grozs, obj):
+        grozs.pop(obj)
+
+def valutmaina(noliktava,valuta):
+    for i in  range(len(noliktava)):
+        noliktava[i].ChangeValuta(valuta)
+
 def main():
+    grozs = {}
     noliktava = PrecuIevade()
-    Izvade(noliktava)
+    # Izvade(noliktava)
+    valutmaina(noliktava, 'GBP')
+    pievienotGrozam(grozs, noliktava[0],5) #pievienoju daudz datorpeļu savam grozam 
+    pievienotGrozam(grozs, noliktava[1],1)
+    pievienotGrozam(grozs, noliktava[2],2)
+    nongrozs(grozs, noliktava[0]) #noņemu datorpeli
+    izvgrozs(grozs)
     print ("hello")
+
 
 if __name__ == "__main__":
     main()
