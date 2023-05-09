@@ -1,7 +1,9 @@
-from abc import ABC, ABCMeta , abstractmethod
+from abc import abstractmethod
 from collections import namedtuple 
+import requests
+import json
 
-class Produkts(metaclass=ABCMeta):
+class Produkts():
     @abstractmethod
     def __init__(self, nosaukums, cena, apraksts):
         self.nosaukums = nosaukums
@@ -9,6 +11,18 @@ class Produkts(metaclass=ABCMeta):
         self.apraksts = apraksts
     def print(self):
         print(self.nosaukums  + " " + self.cena + " " + self.apraksts)
+    def price(self):
+        return self.cena
+    def ChangeValuta(self, currency):
+        x = requests.get('http://open.er-api.com/v6/latest/EUR')
+        data = x.json()
+        # data = json.loads(x.json())
+        rate = float(data['rates'][currency])
+        y = self.cena
+        self.cena = y*rate 
+
+
+        
 
 class Elektronika(Produkts):
     pass
@@ -19,17 +33,3 @@ class Apgerbs(Produkts):
 class Gramata(Produkts):
     pass
 
-class ElektronikaTuple(namedtuple):
-    nosaukums: str
-    cena: str
-    apraksts: str
-
-class ApgerbsTuple(namedtuple):
-    nosaukums: str
-    cena: str
-    apraksts: str
-
-class GramataTuple(namedtuple):
-    nosaukums: str
-    cena: str
-    apraksts: str
