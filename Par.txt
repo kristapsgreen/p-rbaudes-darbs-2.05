@@ -1,2 +1,0 @@
-Gribēju izveidot json failu kur glabāt produktus, izdevās līdz brīdim kad nācās tos ielasīt atpakaļ un to klases pazuda. Šī iemesla dēļ izdomāju apskatīt namedtuple variantu,
-bet tas arī līdz galam neizdevās
